@@ -49,8 +49,8 @@ class MainActivity : AppCompatActivity() {
 
     private val barcodeCallback = object : BarcodeCallback {
         override fun barcodeResult(result: BarcodeResult?) {
-            zxing_barcode_scanner.pause()
             result?.text?.let {
+                zxing_barcode_scanner.pause()
                 Log.d("SCANNER READ", it)
                 try {
                     val data = Gson().fromJson(it, QrJsonData::class.java)
